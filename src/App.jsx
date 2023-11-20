@@ -3,7 +3,7 @@ import "./App.css";
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
 
-// ba6b9d55
+
 
 const API_URL = "http://www.omdbapi.com?apikey=ba6b9d55";
 
@@ -14,7 +14,7 @@ const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
-
+console.log(data);
     setMovies(data.Search);
   };
 
@@ -43,7 +43,7 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard movie={movie} key={movie.imdbID} />
           ))}
         </div>
       ) : (
